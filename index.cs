@@ -70,3 +70,34 @@ IEnumerator RestartLevel(){
     yield return new WaitForSeconds(1f);
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 }
+
+
+//SharedPreferences
+AndroidJavaObject AJO = null;
+
+public void SetPreferenceString (string prefKey, string prefValue) {
+    if(AJO == null)
+        AJO = new AndroidJavaObject("com.yourcompany.productname.activity", new object[0]);
+
+    AJO.Call("setPreferenceString", new object[] { prefKey, prefValue } );
+}
+
+public string GetPreferenceString (string prefKey) {
+    if(AJO == null)
+        AJO = new AndroidJavaObject("com.yourcompany.productname.activity", new object[0]);
+
+    if(AJO == null)
+        return string.Empty;
+    return AJO.Call<string>("getPreferenceString", new object[] { prefKey } );
+}
+
+//Usage in Unity
+//Setting a player's name to be "John Doe"
+void Start () {
+    SetPreferenceString("playerName", "John Doe");
+}
+
+//Get the stored player's name
+string GetPlayerName () {
+    return GetPreferenceString("playerName");
+}
