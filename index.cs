@@ -64,3 +64,9 @@ void OnCollisionEnter(Collision collisionInfo)
 //GetPosition of object of specific axis
 Text scoreText.text = player.position.z.ToString("0");
 
+//Run code after few sec
+using UnityEngine.SceneManagement
+IEnumerator RestartLevel(){
+    yield return new WaitForSeconds(1f);
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+}
