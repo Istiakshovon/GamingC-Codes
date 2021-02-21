@@ -72,7 +72,7 @@ IEnumerator RestartLevel(){
 }
 
 
-//SharedPreferences
+//SharedPreferences( https://stackoverflow.com/a/27719385/13146129 )
 AndroidJavaObject AJO = null;
 
 public void SetPreferenceString (string prefKey, string prefValue) {
